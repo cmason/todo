@@ -23,7 +23,7 @@
 !/tmp/pids/.keep
 
 # Ignore uploaded files in development.
-/coverage/*
+/coverage
 /storage/*
 !/storage/.keep
 /tmp/storage/*
