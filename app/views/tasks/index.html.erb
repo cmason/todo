@@ -1,0 +1,16 @@
+<main class="container">
+  <div class="columns is-mobile">
+    <div class="column is-one-third is-offset-two-thirds">
+      <%= link_to new_task_path, class: "button is-success has-text-weight-bold is-rounded" do %>
+        <span class="icon-text">
+          <span class="icon">
+            <i class="material-icons">add</i>
+          </span>
+          <span>New Task</span>
+        </span>
+      <% end %>
+    </div>
+  </div>
+
+  <%= render @tasks %>
+</main>

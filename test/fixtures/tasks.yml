@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: First todo
+  complete: false
+
+two:
+  title: Second todo
+  complete: false
+
+complete:
+  title: Completed todo
+  complete: true

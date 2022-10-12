@@ -1,0 +1,28 @@
+require:
+  - standard
+  - rubocop-rails
+  - rubocop-minitest
+  - rubocop-performance
+
+inherit_gem:
+  standard: config/ruby-3.0.yml
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - bin/**/*
+    - public/**/*
+    - vendor/**/*
+    - db/schema.rb
+
+Rails:
+  Enabled: true
+
+Minitest:
+  Enabled: true
+
+Performance:
+  Enabled: true
+
+Minitest/MultipleAssertions:
+  Max: 5

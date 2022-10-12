@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Todo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload", as: "style" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+
+  <body>
+    <header class="hero is-info">
+      <div class="hero-body">
+        <h1 class="title is-1">
+          Todos
+        </h1>
+      </div>
+    </header>
+    <section class="section">
+      <div class="container">
+        <div id="flash" class="flash">
+          <%= render "layouts/flash" %>
+        </div>
+        <%= yield %>
+      </div>
+    </section>
+  </body>
+</html>
