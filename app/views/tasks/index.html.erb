@@ -18,6 +18,7 @@
 
   <%= turbo_frame_tag "new_task" %>
   <%= turbo_frame_tag "tasks" do %>
+    <%= render "tasks/empty_state" %>
     <%= render @tasks %>
   <% end %>
 </main>

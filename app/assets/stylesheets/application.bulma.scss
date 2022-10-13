@@ -76,3 +76,12 @@
   }
 }
 
+.empty-state {
+  &--only-child {
+    display: none;
+
+    &:only-child {
+      display: revert;
+    }
+  }
+}
