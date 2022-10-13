@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class TasksTest < ApplicationSystemTestCase
   setup do
-    @task = tasks(:one)
+    @task = Task.ordered.first
   end
 
   test "visiting the index" do
@@ -22,23 +22,21 @@ class TasksTest < ApplicationSystemTestCase
     click_on "Create Task"
 
     assert_selector "main", class: "container"
-    assert_text "Task was successfully created"
     assert_text "new todo"
   end
 
   test "should complete Task" do
     assert_not @task.complete?
+    assert_no_selector "s", text: @task.title
     visit root_url
     click_on @task.title, match: :first
-
-    assert_text "Task was successfully completed."
-    assert_predicate @task.reload, :complete?
+    assert_selector "s", text: @task.title
   end
 
   test "should destroy Task" do
     visit root_url
+    assert_text @task.title
     click_on "Delete", match: :first
-
-    assert_text "Task was successfully destroyed"
+    assert_no_text @task.title
   end
 end

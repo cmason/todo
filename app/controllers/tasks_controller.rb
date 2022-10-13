@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   # GET /tasks
   def index
-    @tasks = Task.all
+    @tasks = Task.ordered
   end
 
   # GET /tasks/new
@@ -18,6 +18,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.save
         format.html { redirect_to root_url, notice: t(".success") }
+        format.turbo_stream
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -41,6 +42,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to root_url, notice: t(".success") }
+      format.turbo_stream
     end
   end
 
