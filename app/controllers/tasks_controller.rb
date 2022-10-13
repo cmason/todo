@@ -18,7 +18,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.save
         format.html { redirect_to root_url, notice: t(".success") }
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = t(".success") }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -30,6 +30,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.update complete: !@task.complete
         format.html { redirect_to root_url, notice: t(".#{@task.complete?}") }
+        format.turbo_stream { flash.now[:notice] = t(".#{@task.complete?}") }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -42,7 +43,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to root_url, notice: t(".success") }
-      format.turbo_stream
+      format.turbo_stream { flash.now[:notice] = t(".success") }
     end
   end
 

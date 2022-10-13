@@ -4,6 +4,7 @@ class Task < ApplicationRecord
   # after_destroy_commit -> { broadcast_remove_to "tasks" }
   # The three callbacks above are equivalent to the following
   broadcasts_to ->(task) { "tasks" }, inserts_by: :prepend
+
   validates :title, presence: true
 
   scope :ordered, -> { order(id: :desc) }
