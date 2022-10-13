@@ -17,15 +17,16 @@ class TasksTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Todos"
 
     click_on "New Task"
-    assert_selector "h1", text: "New task"
     fill_in "task_title", with: "new todo"
+    assert_not page.current_path == "/tasks/new"
     click_on "Create Task"
 
+    assert_selector "main", class: "container"
     assert_text "Task was successfully created"
     assert_text "new todo"
   end
 
-  test "should update Task" do
+  test "should complete Task" do
     assert_not @task.complete?
     visit root_url
     click_on @task.title, match: :first
