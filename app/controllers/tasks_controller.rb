@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   # GET /tasks
   def index
-    @tasks = Task.all
+    @tasks = Task.ordered
   end
 
   # GET /tasks/new
@@ -18,6 +18,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.save
         format.html { redirect_to root_url, notice: t(".success") }
+        format.turbo_stream { flash.now[:notice] = t(".success") }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -29,6 +30,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.update complete: !@task.complete
         format.html { redirect_to root_url, notice: t(".#{@task.complete?}") }
+        format.turbo_stream { flash.now[:notice] = t(".#{@task.complete?}") }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -41,12 +43,12 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to root_url, notice: t(".success") }
+      format.turbo_stream { flash.now[:notice] = t(".success") }
     end
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_task
     @task = Task.find(params[:id])
   end

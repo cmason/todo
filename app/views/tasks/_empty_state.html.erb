@@ -1,0 +1,16 @@
+<%# <div class="empty-state"> %>
+  <div class="box has-text-centered has-background-warning empty-state empty-state--only-child">
+    <p class="title">You've got nothing to do.</p>
+    <p class="subtitle">Let's fix that!</p>
+    <%= link_to new_task_path,
+                class: "button is-success has-text-weight-bold is-rounded",
+                data: { turbo_frame: "new_task" } do %>
+      <span class="icon-text">
+        <span class="icon">
+          <i class="material-icons">add</i>
+        </span>
+        <span>New Task</span>
+      </span>
+    <% end %>
+  </div>
+ <%# </div> %>

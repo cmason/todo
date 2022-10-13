@@ -41,6 +41,9 @@
 
 @import 'bulma/bulma';
 
+.turbo-progress-bar {
+  background: linear-gradient(to right, $grey-lighter, $grey-dark);
+}
 .flash {
   position:fixed;
   top: 5rem;
@@ -58,9 +61,7 @@
 
   &__message {
     font-size: 0.875rem;
-    // color: var(--color-white);
     padding: 0.5rem 1rem;
-    // background-color: var(--color-dark);
     animation: appear-then-fade 4s both;
     border-radius: 999px;
   }
@@ -75,3 +76,12 @@
   }
 }
 
+.empty-state {
+  &--only-child {
+    display: none;
+
+    &:only-child {
+      display: revert;
+    }
+  }
+}

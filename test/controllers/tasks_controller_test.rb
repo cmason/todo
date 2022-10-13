@@ -23,6 +23,11 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
   end
 
+  test "should return 422 status if can't create task" do
+    post tasks_url, params: {task: {complete: nil, title: nil}}
+    assert_response :unprocessable_entity
+  end
+
   test "should update task" do
     patch task_url(@task), params: {task: {complete: @task.complete, title: @task.title}}
     assert_redirected_to root_url

@@ -1,7 +1,11 @@
+<%= turbo_stream_from "tasks" %>
+
 <main class="container">
   <div class="columns is-mobile">
     <div class="column is-one-third is-offset-two-thirds">
-      <%= link_to new_task_path, class: "button is-success has-text-weight-bold is-rounded" do %>
+      <%= link_to new_task_path,
+                  class: "button is-success has-text-weight-bold is-rounded",
+                  data: { turbo_frame: "new_task" } do %>
         <span class="icon-text">
           <span class="icon">
             <i class="material-icons">add</i>
@@ -12,5 +16,9 @@
     </div>
   </div>
 
-  <%= render @tasks %>
+  <%= turbo_frame_tag "new_task" %>
+  <%= turbo_frame_tag "tasks" do %>
+    <%= render "tasks/empty_state" %>
+    <%= render @tasks %>
+  <% end %>
 </main>
